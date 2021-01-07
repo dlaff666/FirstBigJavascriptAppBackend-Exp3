@@ -17,6 +17,11 @@ app.get('/socket.js', (req, res) => {
     res.sendFile(__dirname + '/socket.js');
 });
 
+// Route for chart.js
+app.get('/chart.js', (req, res) => {
+    res.sendFile(__dirname + '/chart.js');
+});
+
 io.on('connection', (socket) => {
 
     // New connection listener
