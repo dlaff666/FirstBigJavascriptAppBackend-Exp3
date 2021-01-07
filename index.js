@@ -12,6 +12,11 @@ app.get('/eventhandlers.js', (req, res) => {
     res.sendFile(__dirname + '/eventhandlers.js');
 });
 
+// Route for socket.js
+app.get('/socket.js', (req, res) => {
+    res.sendFile(__dirname + '/socket.js');
+});
+
 io.on('connection', (socket) => {
 
     // New connection listener
