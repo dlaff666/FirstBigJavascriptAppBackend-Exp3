@@ -10,7 +10,7 @@
     </head>
 
     <body>
-
+        <!-- Scripts -->
         <script src='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/js/all.min.js'></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw=="
         crossorigin="anonymous"></script>
@@ -30,22 +30,26 @@
             </div>
         </section>
 
-
+        <!-- Columns -->
         <div class="columns m-5">
 
+            <!-- Left column -->
             <div class="column">
 
-                <!-- Form -->
+                <!-- Tabs -->
                 <div class="tabs">
 
+                    <!-- Form/chart tabs -->
                     <ul>
 
+                        <!-- Form tab -->
                         <li class="is-active">
                             <a onclick="$('form').show(); $('#chart').hide()">
                                 Form
                             </a>
                         </li>
 
+                        <!-- Chart tab -->
                         <li>
                             <a onclick="$('form').hide(); $('#chart').show()">
                                 Chart
@@ -56,8 +60,10 @@
 
                 </div>
 
+                <!-- Form -->
                 <form>
 
+                    <!-- Name field -->
                     <div class="field">
 
                         <label class="label">
@@ -70,6 +76,7 @@
 
                     </div>
 
+                    <!-- Username field -->
                     <div class="field">
 
                         <label class="label">
@@ -80,22 +87,26 @@
 
                             <input id="form-user-short-name" class="input is-success" type="text" placeholder="Text input" value="bulma">
 
+                            <!-- Person icon -->
                             <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
 
+                            <!-- Checkmark icon -->
                             <span class="icon is-small is-right">
                                 <i class="fas fa-check"></i>
                             </span>
 
                         </div>
 
+                        <!-- Available message -->
                         <p class="help is-success">
                             This username is available
                         </p>
 
                     </div>
 
+                    <!-- Message field -->
                     <div class="field">
 
                         <label class="label">
@@ -108,10 +119,13 @@
 
                     </div>
 
+                    <!-- Favorite number field -->
                     <input id="form-user-favorite-number" type="number" min="0" max="10" />
 
+                    <!-- Favorite color field -->
                     <input id="form-user-favorite-color" type="color" />
 
+                    <!-- Submit field -->
                     <div class="field is-grouped">
 
                         <div class="control">
@@ -130,7 +144,9 @@
 
                 </form>
 
+                <!-- Chart -->
                 <div id="chart">
+
                     <div class="wrapper">
                         <canvas id="chart-0"></canvas>
                     </div>
@@ -150,48 +166,60 @@
                         </button>
 
                     </div>
+
                 </div>
+
             </div>
 
+            <!-- Right column -->
             <div class="column" id="user-list">
 
+                <!-- Typing notification -->
                 <h3 id="user-typing-status"></h3>
 
-                <!-- User Cards -->
+                <!-- User cards -->
                 <div class="box">
                     <article class="media">
 
+                        <!-- Color box -->
                         <div class="media-left">
                             <figure id="card-user-favorite-color-1" class="image is-64x64">
                                 <!--<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">-->
                             </figure>
                         </div>
 
+                        <!-- User content -->
                         <div class="media-content">
 
                             <div class="content">
                                 <p>
 
+                                    <!-- Name -->
                                     <strong>
                                         John Smith
                                     </strong>
 
+                                    <!-- Username -->
                                     <small>
                                         @johnsmith
                                     </small>
 
+                                    <!-- Favorite number -->
                                     <em>
                                         31m
                                     </em>
 
                                     <br>
 
+                                    <!-- Message -->
                                     <span>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
                                     </span>
+
                                 </p>
                             </div>
 
+                            <!-- Typing spinner -->
                             <div class="icon has-text-info is-hidden">
                                 <i class="fas fa-spinner fa-pulse"></i>
                             </div>
@@ -205,10 +233,7 @@
 
         </div>
 
-
-
-
-
+        <!-- Scripts -->
         <script>
             var DATA_COUNT = 6;
 
