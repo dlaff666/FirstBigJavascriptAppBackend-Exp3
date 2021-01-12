@@ -54,6 +54,11 @@ io.on('connection', (socket) => {
         io.emit('disconnect-user', {"socketId": socket.id});
     });
 
+    //Send to new user
+    socket.on('private-user-update', (jsonData) => {
+        io.to(jsonData.targetID).emit('user-update', jsonData);
+    });
+
 });
 
 // Listener

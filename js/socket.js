@@ -119,7 +119,31 @@ $(function () {
         {
             let newCard = $('.box').first().clone();
             newCard.attr('data-socket-id', jsonData.socketId).appendTo('#user-list');
-        } 
+        }
+
+        //Set self card
+        let myCard = $(`.box[data-socket-id="${socket.id}"]`);
+
+        //Get self data
+        let myFullName = myCard.find('strong').text();
+        let myShortName = myCard.find('small').text();
+        let myFavoriteNumber = myCard.find('em').text();
+        let myMessage = myCard.find('span').text();
+        let myFavoriteColor = myCard.find('figure').css('background-color');
+
+        //Form my JSON data
+        let myJsonData = {
+            "socketId": socket.id,
+            "userFullName": myFullName,
+            "userShortName": myShortName,
+            "userMessage": myMessage,
+            "userFavoriteNumber": myFavoriteNumber,
+            "userFavoriteColor": myFavoriteColor,
+            "targetID": jsonData.socketId
+        }
+
+        //Emit data to new user
+        socket.emit('private-user-update', myJsonData)
     });
 
     //on user disconnect
