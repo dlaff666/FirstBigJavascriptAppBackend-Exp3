@@ -8,18 +8,18 @@ app.get('/', (req, res) => {
 });
 
 // Route for eventhandlers.js
-app.get('/eventhandlers.js', (req, res) => {
-    res.sendFile(__dirname + '/eventhandlers.js');
+app.get('/js/eventhandlers.js', (req, res) => {
+    res.sendFile(__dirname + '/js/eventhandlers.js');
 });
 
 // Route for socket.js
-app.get('/socket.js', (req, res) => {
-    res.sendFile(__dirname + '/socket.js');
+app.get('/js/socket.js', (req, res) => {
+    res.sendFile(__dirname + '/js/socket.js');
 });
 
 // Route for chart.js
-app.get('/chart.js', (req, res) => {
-    res.sendFile(__dirname + '/chart.js');
+app.get('/js/chart.js', (req, res) => {
+    res.sendFile(__dirname + '/js/chart.js');
 });
 
 io.on('connection', (socket) => {
