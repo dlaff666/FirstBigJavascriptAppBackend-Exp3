@@ -74,7 +74,7 @@ $(function () {
         }
 
         //update user card
-        userCard.find('strong').text(jsonData.userFullName);
+        userCard.find('h2').text(jsonData.userFullName);
         userCard.find('small').text(jsonData.userShortName);
         userCard.find('em').text(jsonData.userFavoriteNumber);
         userCard.find('span').text(jsonData.userMessage);
@@ -125,7 +125,7 @@ $(function () {
         let myCard = $(`.box[data-socket-id="${socket.id}"]`);
 
         //Get self data
-        let myFullName = myCard.find('strong').text();
+        let myFullName = myCard.find('h2').text();
         let myShortName = myCard.find('small').text();
         let myFavoriteNumber = myCard.find('em').text();
         let myMessage = myCard.find('span').text();
