@@ -3,6 +3,29 @@ $(function () {
     //create socket
     var socket = io();
 
+    //Set fields from local
+    for (var i=0; i<window['localStorage'].length; i++)
+    {
+        let key = window['localStorage'].key(i);
+        switch (key)
+        {
+            case 'fullName':
+                $('#form-user-full-name').val(window['localStorage'].getItem(key));
+                break;
+            case 'shortName':
+                $('#form-user-short-name').val(window['localStorage'].getItem(key));
+                break;
+            case 'favNumber':
+                $('#form-user-favorite-number').val(window['localStorage'].getItem(key));
+                break;
+            case 'favColor':
+                $('#form-user-favorite-color').val(window['localStorage'].getItem(key));
+                break;
+            default:
+                console.log('Unknown storage variable: ' + key);
+        }
+    }
+
     //hide chart section at start
     $('#chart').hide();
 
@@ -17,6 +40,12 @@ $(function () {
         let userMessage = $('#form-user-message').val();
         let userFavoriteNumber = $('#form-user-favorite-number').val();
         let userFavoriteColor = $('#form-user-favorite-color').val();
+
+        //Store fields in local
+        window['localStorage'].setItem('fullName', userFullName);
+        window['localStorage'].setItem('shortName', userShortName);
+        window['localStorage'].setItem('favNumber', userFavoriteNumber);
+        window['localStorage'].setItem('favColor', userFavoriteColor);
 
         //update user card ~~OBSOLETE~~
         /*const user-card = $(`.box[data-socket-id="${socket.id}"`);
@@ -159,8 +188,6 @@ $(function () {
         /*$('.box').first().data('socket-id', socket.id);*/
         $('.box').first().attr('data-socket-id', socket.id);
     });
-
-    const fullNameFromLocalStorage = window['localStorage'].getItem('fullName');
 
     //key-up listener for full-name field in form
     $("#form-user-full-name").keyup(() => {
