@@ -43,15 +43,15 @@
                     <ul>
 
                         <!-- Form tab -->
-                        <li class="is-active">
-                            <a onclick="$('form').show(); $('#chart').hide()">
+                        <li id="form-tab" class="is-active">
+                            <a onclick="showForm();">
                                 Form
                             </a>
                         </li>
 
                         <!-- Chart tab -->
-                        <li>
-                            <a onclick="$('form').hide(); $('#chart').show()">
+                        <li id="chart-tab">
+                            <a onclick="showChart();">
                                 Chart
                             </a>
                         </li>
@@ -233,13 +233,13 @@
 
         <!-- Scripts -->
 
-        <!-- Chart script -->
-        <script src="/js/chart.js"></script>
-
         <!-- Socket.IO hookup -->
         <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
 
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+        <!-- Chart script -->
+        <script src="/js/chart.js"></script>
 
         <script src="/js/socket.js"></script>
 

@@ -26,9 +26,6 @@ $(function () {
         }
     }
 
-    //hide chart section at start
-    $('#chart').hide();
-
     //on a submit
     $('form').submit((e) => {
         //prevent reloading

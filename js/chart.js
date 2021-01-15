@@ -1,5 +1,24 @@
 var DATA_COUNT = 6;
 
+//hide chart section at start
+$('#chart').hide();
+
+//On form click
+function showForm() {
+    $('form').show();
+    $('#form-tab').addClass('is-active');
+    $('#chart').hide();
+    $('#chart-tab').removeClass('is-active');
+}
+
+//On chart click
+function showChart() {
+    $('#chart').show();
+    $('#chart-tab').addClass('is-active');
+    $('form').hide();
+    $('#form-tab').removeClass('is-active');
+}
+
 // Create data set
 var data = {
     labels: ['user1'],
