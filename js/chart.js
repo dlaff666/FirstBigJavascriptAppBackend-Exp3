@@ -1,7 +1,9 @@
 var DATA_COUNT = 6;
 
-//hide chart section at start
+//hide sections at start
 $('#chart').hide();
+$('#private-chat').hide();
+$('#dropdown-menu').hide();
 
 //On form click
 function showForm() {
@@ -31,6 +33,10 @@ function showPrivateChat() {
     $('#chart').hide();
     $('#form-tab').removeClass('is-active');
     $('#chart-tab').removeClass('is-active');
+}
+
+function dropdownClick() {
+    $('#dropdown-menu').toggle();
 }
 
 // Create data set
