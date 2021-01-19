@@ -8,7 +8,9 @@ function showForm() {
     $('form').show();
     $('#form-tab').addClass('is-active');
     $('#chart').hide();
+    $('#private-chat').hide();
     $('#chart-tab').removeClass('is-active');
+    $('#private-chat-tab').removeClass('is-active');
 }
 
 //On chart click
@@ -16,7 +18,19 @@ function showChart() {
     $('#chart').show();
     $('#chart-tab').addClass('is-active');
     $('form').hide();
+    $('#private-chat').hide();
     $('#form-tab').removeClass('is-active');
+    $('#private-chat-tab').removeClass('is-active');
+}
+
+//On private chat click
+function showPrivateChat() {
+    $('#private-chat').show();
+    $('#private-chat-tab').addClass('is-active');
+    $('form').hide();
+    $('#chart').hide();
+    $('#form-tab').removeClass('is-active');
+    $('#chart-tab').removeClass('is-active');
 }
 
 // Create data set
