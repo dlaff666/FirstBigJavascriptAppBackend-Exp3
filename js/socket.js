@@ -27,7 +27,7 @@ $(function () {
     }
 
     //on a submit
-    $('form').submit((e) => {
+    $('#public-form').submit((e) => {
         //prevent reloading
         e.preventDefault();
 
@@ -69,8 +69,8 @@ $(function () {
         //emit jsonData to all
         socket.emit('user-update', jsonData);
 
-        //unknown purpose
-        /*return false;*/
+        //prevent reload
+        return false;
 
     });
 
@@ -112,6 +112,24 @@ $(function () {
             backgroundColor: [jsonData.userFavoriteColor]
         });
         chart.update();
+
+        //set user item
+        let userDropdownItem = $(`.dropdown-item[dropdown-socket-id="${jsonData.socketId}"]`);
+
+        //create user item
+        if (!userDropdownItem.length && jsonData.socketId != socket.id) {
+            userDropdownItem = $('#dropdown-template').clone();
+            userDropdownItem.removeAttr('id');
+            userDropdownItem.attr('dropdown-socket-id', jsonData.socketId).appendTo('#dropdown-items')
+        }
+
+        //update user item
+        if (jsonData.userFullName != '') {
+            userDropdownItem.find('.dropdown-username').text(jsonData.userFullName);
+        }
+        else{
+            userDropdownItem.find('.dropdown-username').text('[empty name]');
+        }
 
     });
 
@@ -170,6 +188,17 @@ $(function () {
 
         //Emit data to new user
         socket.emit('private-user-update', myJsonData)
+
+        //set user item
+        let userDropdownItem = $(`.dropdown-item[dropdown-socket-id="${jsonData.socketId}"]`);
+
+        //create user item
+        if (!userDropdownItem.length && jsonData.socketId != socket.id) {
+            userDropdownItem = $('#dropdown-template').clone();
+            userDropdownItem.find('.dropdown-username').text('New User');
+            userDropdownItem.attr('dropdown-socket-id', jsonData.socketId).appendTo('#dropdown-items');
+        }
+
     });
 
     //on user disconnect

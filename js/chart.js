@@ -7,7 +7,7 @@ $('#dropdown-menu').hide();
 
 //On form click
 function showForm() {
-    $('form').show();
+    $('#public-form').show();
     $('#form-tab').addClass('is-active');
     $('#chart').hide();
     $('#private-chat').hide();
@@ -19,7 +19,7 @@ function showForm() {
 function showChart() {
     $('#chart').show();
     $('#chart-tab').addClass('is-active');
-    $('form').hide();
+    $('#public-form').hide();
     $('#private-chat').hide();
     $('#form-tab').removeClass('is-active');
     $('#private-chat-tab').removeClass('is-active');
@@ -29,14 +29,28 @@ function showChart() {
 function showPrivateChat() {
     $('#private-chat').show();
     $('#private-chat-tab').addClass('is-active');
-    $('form').hide();
+    $('#public-form').hide();
     $('#chart').hide();
     $('#form-tab').removeClass('is-active');
     $('#chart-tab').removeClass('is-active');
 }
 
+// Toggle dropdown list
 function dropdownClick() {
     $('#dropdown-menu').toggle();
+}
+
+//Choose private recipien
+function chooseUser(username){
+    let userSocket = $(username).attr('dropdown-socket-id');
+    let userChatBox = $(`.box[chat-box-socket-id="${userSocket}"`);
+    $('#chat-boxes').children().hide();
+    if (!userChatBox.length){
+        userChatBox = $('#chat-box').clone();
+        userChatBox.removeAttr('id');
+        userChatBox.attr('chat-box-socket-id', userSocket).appendTo('#chat-boxes');
+    }
+    userChatBox.show();
 }
 
 // Create data set
