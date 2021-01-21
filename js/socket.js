@@ -74,9 +74,58 @@ $(function () {
 
     });
 
+    $('#private-form').submit((e) => {
+        //prevent reloading
+        e.preventDefault();
+
+        let chatBox = $('div[chat-box-socket-id]:visible').first();
+
+        //get form values
+        let userMessage = $('#form-user-private-chat').val();
+        let userFullName = $('#self-box').find('h2').text();
+        let targetSocket = chatBox.attr('chat-box-socket-id');
+
+        //form the JSON data
+        let jsonData = {
+            "socketId": socket.id,
+            "userMessage": userMessage,
+            "userFullName": userFullName,
+            "targetSocket": targetSocket
+        }
+
+        //emit jsonData to target
+        socket.emit('user-private-chat', jsonData);
+
+        //add to chat window
+        let newMessage = $('#chat-message').clone();
+        newMessage.removeAttr('id');
+        newMessage.text(userFullName + ': ' + userMessage);
+        newMessage.appendTo(chatBox);
+        
+        //prevent reload
+        return false;
+
+    });
+
     //on recieveing a message
-    socket.on('chat message', function(msg){
-        $('#messages').append($('<li>').text(msg));
+    socket.on('private-message', function(jsonData){
+        console.log('message recieved')
+        //get private chat box
+        let chatBox = $(`div[chat-box-socket-id="${jsonData.socketId}"]`);
+
+        //create chat box
+        if (!chatBox.length){
+            chatBox = $('#chat-box').clone();
+            chatBox.removeAttr('id');
+            chatBox.attr('chat-box-socket-id', jsonData.socketId).appendTo('#chat-boxes');
+        }
+
+        //add to chat window
+        let newMessage = $('#chat-message').clone();
+        newMessage.removeAttr('id');
+        newMessage.text(jsonData.userFullName + ': ' + jsonData.userMessage);
+        newMessage.appendTo(chatBox);
+        
     });
 
     //on recieving a user update

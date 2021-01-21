@@ -59,6 +59,12 @@ io.on('connection', (socket) => {
         io.to(jsonData.targetID).emit('user-update', jsonData);
     });
 
+    //Send private chat
+    socket.on('user-private-chat', (jsonData) => {
+        console.log('sending message')
+        io.to(jsonData.targetSocket).emit('private-message', jsonData);
+    });
+
 });
 
 // Listener
