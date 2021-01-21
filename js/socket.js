@@ -95,7 +95,8 @@ $(function () {
         //create box if one doesn't exist
         if (!userCard.length) {
             console.log('Making a box');
-            userCard = $('.box').first().clone();
+            userCard = $('#user-box-template').clone();
+            userCard.removeAttr('id');
             userCard.attr('data-socket-id', jsonData.socketId).appendTo('#user-list');
         }
 
@@ -114,7 +115,7 @@ $(function () {
         chart.update();
 
         //set user item
-        let userDropdownItem = $(`.dropdown-item[dropdown-socket-id="${jsonData.socketId}"]`);
+        let userDropdownItem = $(`div[dropdown-socket-id="${jsonData.socketId}"]`);
 
         //create user item
         if (!userDropdownItem.length && jsonData.socketId != socket.id) {
@@ -161,7 +162,8 @@ $(function () {
         //update number of user-list boxes      
         if (jsonData.socketId !== socket.id) 
         {
-            let newCard = $('.box').first().clone();
+            let newCard = $('#user-box-template').clone();
+            newCard.removeAttr('id');
             newCard.attr('data-socket-id', jsonData.socketId).appendTo('#user-list');
         }
 
@@ -190,11 +192,12 @@ $(function () {
         socket.emit('private-user-update', myJsonData)
 
         //set user item
-        let userDropdownItem = $(`.dropdown-item[dropdown-socket-id="${jsonData.socketId}"]`);
+        let userDropdownItem = $(`div[dropdown-socket-id="${jsonData.socketId}"]`);
 
         //create user item
         if (!userDropdownItem.length && jsonData.socketId != socket.id) {
             userDropdownItem = $('#dropdown-template').clone();
+            userDropdownItem.removeAttr('id');
             userDropdownItem.find('.dropdown-username').text('New User');
             userDropdownItem.attr('dropdown-socket-id', jsonData.socketId).appendTo('#dropdown-items');
         }
@@ -207,12 +210,16 @@ $(function () {
         //delete user card
         let userCard = $(`.box[data-socket-id="${jsonData.socketId}"]`);
         userCard.slideUp('slow').remove();
+
+        //delete user dropdown
+        let userDropdownItem = $(`div[dropdown-socket-id="${jsonData.socketId}"]`);
+        userDropdownItem.remove();
     });
 
     //on connect
     socket.on("connect", () => {
         /*$('.box').first().data('socket-id', socket.id);*/
-        $('.box').first().attr('data-socket-id', socket.id);
+        $('#self-box').attr('data-socket-id', socket.id);
     });
 
     //key-up listener for full-name field in form

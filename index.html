@@ -38,6 +38,55 @@
 
             </div>
 
+            <div id="user-box-template" class="box">
+                <article class="media">
+
+                    <!-- Color box -->
+                    <div class="media-left">
+                        <figure id="card-user-favorite-color-1" class="image is-64x64" style="background-color:#FFFFFF">
+                            <!--<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">-->
+                        </figure>
+                    </div>
+
+                    <!-- User content -->
+                    <div class="media-content">
+
+                        <div class="content">
+
+                            <!-- Name -->
+                            <h2 style="margin-bottom:0" >
+                                New User
+                            </h2>
+
+                            <!-- Username -->
+                            <small>
+                                User
+                            </small>
+
+                            <!-- Favorite number -->
+                            <em>
+                                #
+                            </em>
+
+                            <br>
+
+                            <!-- Message -->
+                            <span>
+                                A new user has connected but not yet submitted an update. As soon as they do, this box will be updated to contain their information.
+                            </span>
+
+                        </div>
+
+                        <!-- Typing spinner -->
+                        <div class="icon has-text-info is-hidden">
+                            <i class="fas fa-spinner fa-pulse"></i>
+                        </div>
+
+                    </div>
+
+                </article>
+            </div>
+
         </div>
         
         <!-- Main Section Heading -->
@@ -227,7 +276,7 @@
                             <div class="dropdown-trigger">
                                 <button class="button" aria-haspopup="true" aria-controls="dropdown-menu2" onclick="dropdownClick();">
 
-                                    <span>Content</span>
+                                    <span id="dropdown-display-text">Select User</span>
 
                                     <span class="icon is-small">
                                         <i class="fas fa-angle-down" aria-hidden="true"></i>
@@ -286,12 +335,12 @@
                 <p id="user-typing-status"></p>
 
                 <!-- User cards -->
-                <div class="box">
+                <div id="self-box" class="box">
                     <article class="media">
 
                         <!-- Color box -->
                         <div class="media-left">
-                            <figure id="card-user-favorite-color-1" class="image is-64x64">
+                            <figure id="card-user-favorite-color-1" class="image is-64x64" style="background-color:#FFFFFF">
                                 <!--<img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">-->
                             </figure>
                         </div>
@@ -303,24 +352,24 @@
 
                                 <!-- Name -->
                                 <h2 style="margin-bottom:0" >
-                                    John Smith
+                                    Your Name
                                 </h2>
 
                                 <!-- Username -->
                                 <small>
-                                    @johnsmith
+                                    You
                                 </small>
 
                                 <!-- Favorite number -->
                                 <em>
-                                    31m
+                                    #
                                 </em>
 
                                 <br>
 
                                 <!-- Message -->
                                 <span>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+                                    If this is the top box, then this is your box. When you submit a message, this box will be updated so that you can see what others see. If this is not your top box, then another user was logged in before you and has not updated their box.
                                 </span>
 
                             </div>

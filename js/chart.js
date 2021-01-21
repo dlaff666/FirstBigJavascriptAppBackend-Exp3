@@ -42,6 +42,8 @@ function dropdownClick() {
 
 //Choose private recipien
 function chooseUser(username){
+    $('#dropdown-menu').hide();
+    $('#dropdown-display-text').text($(username).find('p').first().text());
     let userSocket = $(username).attr('dropdown-socket-id');
     let userChatBox = $(`.box[chat-box-socket-id="${userSocket}"`);
     $('#chat-boxes').children().hide();
